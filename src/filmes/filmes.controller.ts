@@ -32,7 +32,7 @@ export class FilmesController {
 
   @Put(':id')
   async update(@Param('id') id: number, @Body() filme: Filme): Promise<Filme> {
-    filme.id = id;
+    filme.id = +id;
     return this.filmeService.updateFilme(filme);
   }
 

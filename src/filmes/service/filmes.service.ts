@@ -36,6 +36,8 @@ export class FilmesService {
     const filme = this.filmes.find((filme) => filme.id === id);
     return filme;
   }
+
+  // service para criar um filme
   createFilme(filme: Filme) {
     let idAtual = 0;
     if (this.filmes.length > 0) {
@@ -47,6 +49,8 @@ export class FilmesService {
 
     return filme;
   }
+
+  // service para atualizar filme
   updateFilme(filme: Filme) {
     const filmeLista = this.getByIdFilme(filme.id);
 
@@ -57,6 +61,8 @@ export class FilmesService {
 
     return filmeLista;
   }
+
+  // service para excluir filme pelo id
   deleteFilme(id: number) {
     const filmeIndex = this.filmes.findIndex((filme) => filme.id == id);
 

@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+} from '@nestjs/common';
 import { Filme } from './service/filme';
 import { FilmesService } from './service/filmes.service';
 
@@ -26,5 +34,10 @@ export class FilmesController {
   async update(@Param('id') id: number, @Body() filme: Filme): Promise<Filme> {
     filme.id = id;
     return this.filmeService.updateFilme(filme);
+  }
+
+  @Delete(':id')
+  async delete(@Param('id') id: number) {
+    this.filmeService.deleteFilme(+id);
   }
 }

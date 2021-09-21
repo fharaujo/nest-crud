@@ -36,7 +36,30 @@ export class FilmesService {
     const filme = this.filmes.find((filme) => filme.id === id);
     return filme;
   }
-  createFilme(filme: Filme) {}
-  updateFilme(filme: Filme) {}
-  deleteFilme(id: number) {}
+  createFilme(filme: Filme) {
+    let idAtual = 0;
+    if (this.filmes.length > 0) {
+      idAtual = this.filmes[this.filmes.length - 1].id;
+    }
+
+    filme.id = idAtual + 1;
+    this.filmes.push(filme);
+
+    return filme;
+  }
+  updateFilme(filme: Filme) {
+    const filmeLista = this.getByIdFilme(filme.id);
+
+    if (filmeLista) {
+      filmeLista.nome = filme.nome;
+      filmeLista.imagemURL = filme.imagemURL;
+    }
+
+    return filmeLista;
+  }
+  deleteFilme(id: number) {
+    const filmeIndex = this.filmes.findIndex((filme) => filme.id == id);
+
+    this.filmes.splice(filmeIndex, 1);
+  }
 }

@@ -26,12 +26,15 @@ export class FilmesService {
     },
   ];
 
+  // service para buscar todos os filmes
   getAllFilmes() {
     return this.filmes;
   }
+
+  // service para buscar filme por id
   getByIdFilme(id: number) {
-    const idFilme = this.filmes.find((filme) => filme.id === id);
-    return idFilme;
+    const filme = this.filmes.find((filme) => filme.id === id);
+    return filme;
   }
   createFilme(filme: Filme) {}
   updateFilme(filme: Filme) {}
